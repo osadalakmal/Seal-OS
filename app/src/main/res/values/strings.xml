@@ -32,6 +32,8 @@
     <string name="confirm">Confirm</string>
     <string name="dismiss">Cancel</string>
     <string name="downloads_history">Downloads</string>
+    <string name="hackertube">HackerTube</string>
+    <string name="send_to_seal">Send to Seal</string>
     <string name="audio">Audio</string>
     <string name="link_copied">Link copied to clipboard</string>
     <string name="open_url">Open link</string>

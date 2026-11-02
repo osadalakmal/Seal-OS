@@ -47,6 +47,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        if (savedInstanceState == null) {
+            intent?.let { onNewIntent(it) }
+        }
     }
 
     override fun onNewIntent(intent: Intent) {

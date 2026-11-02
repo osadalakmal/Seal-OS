@@ -24,6 +24,7 @@ import androidx.compose.material.icons.filled.Terminal
 import androidx.compose.material.icons.outlined.Download
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.Explore
 import androidx.compose.material.icons.outlined.Subscriptions
 import androidx.compose.material.icons.outlined.Terminal
 import androidx.compose.material.icons.outlined.VolunteerActivism
@@ -194,6 +195,16 @@ fun NavigationDrawerSheetContent(
                         .invokeOnCompletion { onNavigateToRoute(Route.DOWNLOADS) }
                 },
                 selected = currentRoute == Route.DOWNLOADS,
+            )
+            NavigationDrawerItem(
+                label = { Text(stringResource(R.string.hackertube)) },
+                icon = { Icon(Icons.Outlined.Explore, null) },
+                onClick = {
+                    scope
+                        .launch { onDismissRequest() }
+                        .invokeOnCompletion { onNavigateToRoute(Route.HACKERTUBE) }
+                },
+                selected = currentRoute == Route.HACKERTUBE,
             )
             NavigationDrawerItem(
                 label = { Text(stringResource(R.string.custom_command)) },
