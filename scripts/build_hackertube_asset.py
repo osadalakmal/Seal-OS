@@ -1,6 +1,6 @@
 """Trim the HackerTube export into a compact gzip JSON asset for the Browse page.
 
-Usage: python3 -I scripts/build_hackertube_asset.py <hackertube-data dir> <output .json.gz>
+Usage: python3 -I scripts/build_hackertube_asset.py <hackertube-data dir> <output file (gzip data, use a .bin name)>
 
 Keeps ids, titles, channels, HN-derived text and scores. YouTube API metadata is not part of the
 export and is not added here.

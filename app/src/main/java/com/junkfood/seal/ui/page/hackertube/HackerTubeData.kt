@@ -50,7 +50,7 @@ data class HackerTubeDataset(
 )
 
 object HackerTubeRepository {
-    private const val ASSET_PATH = "hackertube/hackertube.json.gz"
+    private const val ASSET_PATH = "hackertube/hackertube.bin"
     private val json = Json { ignoreUnknownKeys = true }
 
     @Volatile private var cached: HackerTubeDataset? = null
