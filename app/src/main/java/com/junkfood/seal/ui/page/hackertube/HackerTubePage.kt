@@ -1,5 +1,6 @@
 package com.junkfood.seal.ui.page.hackertube
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -55,6 +56,7 @@ fun HackerTubePage(onNavigateBack: () -> Unit, onVideoClick: (HackerTubeVideo) -
     val context = LocalContext.current
     var dataset by remember { mutableStateOf<HackerTubeDataset?>(null) }
     var failed by remember { mutableStateOf(false) }
+    var errorText by remember { mutableStateOf("") }
     var query by rememberSaveable { mutableStateOf("") }
     var selectedArea by rememberSaveable { mutableStateOf<String?>(null) }
     var selectedCategory by rememberSaveable { mutableStateOf<String?>(null) }
@@ -64,7 +66,11 @@ fun HackerTubePage(onNavigateBack: () -> Unit, onVideoClick: (HackerTubeVideo) -
     LaunchedEffect(Unit) {
         runCatching { HackerTubeRepository.load(context) }
             .onSuccess { dataset = it }
-            .onFailure { failed = true }
+            .onFailure {
+                Log.e("HackerTube", "Failed to load dataset", it)
+                failed = true
+                errorText = it.toString()
+            }
     }
 
     Scaffold(
@@ -84,7 +90,7 @@ fun HackerTubePage(onNavigateBack: () -> Unit, onVideoClick: (HackerTubeVideo) -
             when {
                 failed ->
                     Text(
-                        "Could not load the HackerTube data.",
+                        "Could not load the HackerTube data.\n$errorText",
                         modifier = Modifier.align(Alignment.Center),
                     )
                 data == null -> CircularProgressIndicator(Modifier.align(Alignment.Center))
